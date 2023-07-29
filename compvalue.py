@@ -144,7 +144,7 @@ class CompareInfo:
 
 class Compvalue:
     def __init__(self):
-        self.m_version          = '20230727.0.0'
+        self.m_version          = '20230730.0.0'
         self.m_node_dic         = {}
         self.m_compare_info     = []
         self.m_output_prefix    = ''
@@ -179,16 +179,34 @@ class Compvalue:
                     datetime.datetime.now())
     def PrintUsage(self):
         print(f'compvalue.py usage({self.m_version}):\n')
-        print(f'    % compvalue.py output_prefix size', end = '')
+        print(f'    % python3 compvalue.py output_prefix size', end = '')
         print(f' 1st_file 1st_name_pos 1st_value_pos', end = '')
         print(f' 2nd_file 2nd_name_pos 2nd_value_pos', end = '')
         print(f'<nth_file nth_name_pos nth_value_pos...> <-abs> <-graph> <-saveimage>')
+        print(f'        output_prefix   : output prefix')
+        print(f"        size            : comparing data set's size")
+        print(f'        nth_file        : file')
+        print(f'        nth_name_pos    : name column pos(0-)')
+        print(f'        nth_value_pos   : value column pos(0-)')
+        print(f'        -abs            : change value to absolute value')
+        print(f'        -graph          : make scatter/histogram plot')
+        print(f'        -saveimage      : save scatter/histogram plot image')
         print(f'    output file')
         print(f'        output_prefix.log               : log file')
         print(f'        output_prefix.both.txt          : compared result file')
-        print(f'        output_prefix.value.scatter.png : value scatter plot image file')
-        print(f'        output_prefix.value.hist.png    : value hist image file')
-        print(f'        output_prefix.diff.hist.png     : diff hist image file')
+        print(f'        output_prefix.value.scatter.png : value scatter plot image file if you use -graph -saveimage')
+        print(f'        output_prefix.value.hist.png    : value hist image file if you use -graph -saveimage')
+        print(f'        output_prefix.diff.hist.png     : diff hist image file if you use -graph -saveimage')
+        print(f'    example')
+        print(f'        compare 2 data set')
+        print(f'        % python3 compvalue.py compare_2 2 1.txt 0 10 2.txt 1 8')
+        print(f'        compare 3 data set')
+        print(f'        % python3 compvalue.py compare_3 3 1.txt 0 10 2.txt 1 8 3.txt 5 20')
+        print(f'        compare 3 data set and display scatter/histogram chart')
+        print(f'        % python3 compvalue.py compare_3 3 1.txt 0 10 2.txt 1 8 3.txt 5 20 -graph')
+        print(f'        compare 3 data set and save scatter/histogram chart image')
+        print(f'        % python3 compvalue.py compare_3 3 1.txt 0 10 2.txt 1 8 3.txt 5 20 -graph -saveimage')
+        print('')
     def InitLogging(self, argc, argv):
         self.m_output_prefix    = argv[1]
         log_filename    = self.m_output_prefix + '.log'
