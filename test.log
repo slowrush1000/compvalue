@@ -1,0 +1,84 @@
+
+# init logging ok. ... 2023-07-29 17:29:06.752905
+
+# compvalue.py(20230727.0.0) start. ... 2023-07-29 17:29:06.753939
+# read args. ... 2023-07-29 17:29:06.753939
+
+# print input. ... 2023-07-29 17:29:06.753939
+    outpuit prefix : test
+    size           : 3
+    0 th filename  : 1.txt
+    0 th name pos  : 0
+    0 th value pos : 1
+    1 th filename  : 1.txt
+    1 th name pos  : 0
+    1 th value pos : 2
+    2 th filename  : 1.txt
+    2 th name pos  : 0
+    2 th value pos : 3
+    abs            : False
+    graph          : True
+
+# read file(1.txt). ... 2023-07-29 17:29:06.757504
+    3 lines
+
+# read file(1.txt). ... 2023-07-29 17:29:06.759060
+    3 lines
+
+# read file(1.txt). ... 2023-07-29 17:29:06.759060
+    3 lines
+
+# compare ( 1.txt vs 1.txt ). ... 2023-07-29 17:29:06.760225
+
+# compare ( 1.txt vs 1.txt ). ... 2023-07-29 17:29:06.760225
+
+# print compare result. ... 2023-07-29 17:29:06.761229
+1 th compare result
+    size                 : 3
+    diff avg             : 3.980000e+02
+    diff max             : 5.970000e+02
+    diff max name        : c
+    diff max 0th value   : 3.000000e+00
+    diff max nth value   : 6.000000e+02
+    diff min             : 199.0
+    diff min name        : a
+    diff min 0th value   : 1.000000e+00
+    diff min nth value   : 2.000000e+02
+    diff max %           : 19900.0
+    diff max % name      : a
+    diff max % 0th value : 1.000000e+00
+    diff max % nth value : 2.000000e+02
+    diff min %           : 19900.0
+    diff min % name      : a
+    diff min % 0th value : 1.000000e+00
+    diff min % nth value : 2.000000e+02
+
+2 th compare result
+    size                 : 3
+    diff avg             : 6.980000e+02
+    diff max             : 8.970000e+02
+    diff max name        : c
+    diff max 0th value   : 3.000000e+00
+    diff max nth value   : 9.000000e+02
+    diff min             : 399.0
+    diff min name        : a
+    diff min 0th value   : 1.000000e+00
+    diff min nth value   : 4.000000e+02
+    diff max %           : 39900.0
+    diff max % name      : a
+    diff max % 0th value : 1.000000e+00
+    diff max % nth value : 4.000000e+02
+    diff min %           : 29900.0
+    diff min % name      : c
+    diff min % 0th value : 3.000000e+00
+    diff min % nth value : 9.000000e+02
+
+# write output file(test.both.txt). ... 2023-07-29 17:29:06.762228
+
+# draw scatter plot. ... 2023-07-29 17:29:06.763229
+
+# draw value histrogram plot. ... 2023-07-29 17:29:11.273587
+
+# draw diff histrogram plot. ... 2023-07-29 17:29:15.123240
+
+# compvalue.py(20230727.0.0) end. ... 2023-07-29 17:29:21.811602
