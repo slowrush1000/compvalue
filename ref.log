@@ -1,10 +1,10 @@
 
-# init logging ok. ... 2023-07-29 17:29:06.752905
+# init logging ok. ... 2023-07-29 20:02:52.958142
 
-# compvalue.py(20230727.0.0) start. ... 2023-07-29 17:29:06.753939
-# read args. ... 2023-07-29 17:29:06.753939
+# compvalue.py(20230727.0.0) start. ... 2023-07-29 20:02:52.959326
+# read args. ... 2023-07-29 20:02:52.959811
 
-# print input. ... 2023-07-29 17:29:06.753939
+# print input. ... 2023-07-29 20:02:52.960746
     outpuit prefix : test
     size           : 3
     0 th filename  : 1.txt
@@ -18,21 +18,22 @@
     2 th value pos : 3
     abs            : False
     graph          : True
+    saveimage      : True
 
-# read file(1.txt). ... 2023-07-29 17:29:06.757504
+# read file(1.txt). ... 2023-07-29 20:02:52.971160
     3 lines
 
-# read file(1.txt). ... 2023-07-29 17:29:06.759060
+# read file(1.txt). ... 2023-07-29 20:02:52.981586
     3 lines
 
-# read file(1.txt). ... 2023-07-29 17:29:06.759060
+# read file(1.txt). ... 2023-07-29 20:02:52.989389
     3 lines
 
-# compare ( 1.txt vs 1.txt ). ... 2023-07-29 17:29:06.760225
+# compare ( 1.txt vs 1.txt ). ... 2023-07-29 20:02:52.998087
 
-# compare ( 1.txt vs 1.txt ). ... 2023-07-29 17:29:06.760225
+# compare ( 1.txt vs 1.txt ). ... 2023-07-29 20:02:52.999384
 
-# print compare result. ... 2023-07-29 17:29:06.761229
+# print compare result. ... 2023-07-29 20:02:53.000350
 1 th compare result
     size                 : 3
     diff avg             : 3.980000e+02
@@ -73,12 +74,15 @@
     diff min % 0th value : 3.000000e+00
     diff min % nth value : 9.000000e+02
 
-# write output file(test.both.txt). ... 2023-07-29 17:29:06.762228
+# write output file(test.both.txt). ... 2023-07-29 20:02:53.003356
 
-# draw scatter plot. ... 2023-07-29 17:29:06.763229
+# draw scatter plot. ... 2023-07-29 20:02:53.010103
+   scatter plot image file : test.value.scatter.png
 
-# draw value histrogram plot. ... 2023-07-29 17:29:11.273587
+# draw value histrogram plot. ... 2023-07-29 20:02:53.202505
+   value histogram image file : test.value.hist.png
 
-# draw diff histrogram plot. ... 2023-07-29 17:29:15.123240
+# draw diff histrogram plot. ... 2023-07-29 20:02:53.287423
+   diff histogram image file : test.diff.hist.png
 
-# compvalue.py(20230727.0.0) end. ... 2023-07-29 17:29:21.811602
+# compvalue.py(20230727.0.0) end. ... 2023-07-29 20:02:53.374513

@@ -154,6 +154,7 @@ class Compvalue:
         self.m_value_poss       = [0]
         self.m_abs              = False
         self.m_graph            = False
+        self.m_saveimage        = False
         self.m_logger           = 0
     def Run(self, argc, argv):
         if 9 > argc:
@@ -181,7 +182,13 @@ class Compvalue:
         print(f'    % compvalue.py output_prefix size', end = '')
         print(f' 1st_file 1st_name_pos 1st_value_pos', end = '')
         print(f' 2nd_file 2nd_name_pos 2nd_value_pos', end = '')
-        print(f'<nth_file nth_name_pos nth_value_pos...> <-abs> <-graph>')
+        print(f'<nth_file nth_name_pos nth_value_pos...> <-abs> <-graph> <-saveimage>')
+        print(f'    output file')
+        print(f'        output_prefix.log               : log file')
+        print(f'        output_prefix.both.txt          : compared result file')
+        print(f'        output_prefix.value.scatter.png : value scatter plot image file')
+        print(f'        output_prefix.value.hist.png    : value hist image file')
+        print(f'        output_prefix.diff.hist.png     : diff hist image file')
     def InitLogging(self, argc, argv):
         self.m_output_prefix    = argv[1]
         log_filename    = self.m_output_prefix + '.log'
@@ -223,6 +230,8 @@ class Compvalue:
                 self.m_abs = True
             elif '-graph' == argv[pos]:
                 self.m_graph = True
+            elif '-saveimage' == argv[pos]:
+                self.m_saveimage = True
         self.m_logger.info('')
     def PrintInput(self):
         self.m_logger.info('# print input. ... %s',
@@ -235,6 +244,7 @@ class Compvalue:
             self.m_logger.info('    %d th value pos : %d', pos, self.m_value_poss[pos])
         self.m_logger.info('    abs            : %s', self.m_abs)
         self.m_logger.info('    graph          : %s', self.m_graph)
+        self.m_logger.info('    saveimage      : %s', self.m_saveimage)
         self.m_logger.info('')
     def ReadFiles(self):
         pos = 0
@@ -357,10 +367,16 @@ class Compvalue:
         fig = plt.figure()
         ax1 = fig.add_subplot(111)
         for pos in range(1, len(self.m_filenames)):
-            ax1.scatter(data[0], data[pos], label=f'{pos}th')
+            ax1.scatter(data[0], data[pos], label=f'{self.m_filenames[pos]}:{self.m_name_poss[pos]}:{self.m_value_poss[pos]}')
         ax1.set_title('value scatter plot')
         plt.legend(loc='upper left')
-        plt.show()
+        plt.xlabel(f'{self.m_filenames[0]}:{self.m_name_poss[0]}:{self.m_value_poss[0]}')
+        if False == self.m_saveimage:
+            plt.show()
+        else:
+            filename = self.m_output_prefix + '.value.scatter.png'
+            self.m_logger.info(f'   scatter plot image file : {filename}')
+            plt.savefig(filename)
         self.m_logger.info(f'')
     def DrawValueHistogram(self):
         self.m_logger.info(f'# draw value histrogram plot. ... {datetime.datetime.now()}')
@@ -383,12 +399,17 @@ class Compvalue:
         ax1 = fig.add_subplot(111)
         labels  = []
         for pos in range(0, len(self.m_filenames)):
-            labels.append(f'{pos} th')
+            labels.append(f'{self.m_filenames[pos]}:{self.m_name_poss[pos]}:{self.m_value_poss[pos]}')
         n_bins = 10
         ax1.hist(data, n_bins, label=labels)
         ax1.set_title('value histogram')
         plt.legend(loc='upper right')
-        plt.show()
+        if False == self.m_saveimage:
+            plt.show()
+        else:
+            filename = self.m_output_prefix + '.value.hist.png'
+            self.m_logger.info(f'   value histogram image file : {filename}')
+            plt.savefig(filename)
         self.m_logger.info(f'')
     def DrawDiffHistogram(self):
         self.m_logger.info(f'# draw diff histrogram plot. ... {datetime.datetime.now()}')
@@ -411,12 +432,17 @@ class Compvalue:
         ax1 = fig.add_subplot(111)
         labels  = []
         for pos in range(1, len(self.m_filenames)):
-            labels.append(f'{pos} th')
+            labels.append(f'{self.m_filenames[pos]}:{self.m_name_poss[pos]}:{self.m_value_poss[pos]}')
         n_bins = 10
         ax1.hist(data[1:len(self.m_filenames)], n_bins, label=labels)
         ax1.set_title('diff histogram')
         plt.legend(loc='upper right')
-        plt.show()
+        if False == self.m_saveimage:
+            plt.show()
+        else:
+            filename = self.m_output_prefix + '.diff.hist.png'
+            self.m_logger.info(f'   diff histogram image file : {filename}')
+            plt.savefig(filename)
         self.m_logger.info(f'')
 
 def main(argc, argv):
